@@ -1,0 +1,110 @@
+
+<form novalidate autocomplete="on" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="applicantId"
+    [value]="service.formData.applicantId"/>
+    
+    <div class="form-group"  >        <label> NAME</label>
+        <input  class="form-control form-control-lg" placeholder="Enter Name" name="name"
+        #name="ngModel" [(ngModel)]="service.formData.name" 
+        required minlength="5" [class.invalid]="name.invalid && name.touched ">
+        <div  [hidden]="name.valid || name.pristine"
+    class="alert alert-danger" >
+    Name must be atleast 5 characters
+        </div>
+    </div>
+    <div class="form-group" >
+        <label> FAMILY NAME</label>
+        <input  class="form-control form-control-lg" placeholder="Enter Family Name" name="familyName"
+        #familyName="ngModel" [(ngModel)]="service.formData.familyName" 
+        required minlength="5" [class.invalid]="familyName.invalid && familyName.touched ">
+        <div  [hidden]="familyName.valid || familyName.pristine"
+    class="alert alert-danger" >
+    FamilyName must be atleast 5 characters
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label> ADDRESS</label>
+        <input  class="form-control form-control-lg" placeholder="Enter Address" name="address"
+        #address="ngModel" [(ngModel)]="service.formData.address" 
+        required minlength="10" 
+        [class.invalid]="address.invalid && address.touched ">
+        <div  [hidden]="address.valid || address.pristine"
+    class="alert alert-danger" >
+    Address must be atleast 10 characters
+        </div>
+    </div>
+
+   
+    <div class="form-group">
+                <label>COUNTRY OF ORIGIN </label>
+                <select
+                  class="form-control form-control-lg" 
+                
+                  name="countryOfOrigin"
+                  #countryOfOrigin="ngModel"
+                  [(ngModel)]="service.formData.countryOfOrigin"
+                  required
+                >
+             <option *ngFor="let c of count.countries" [value]="c.name">
+                    {{ c.name }}
+                   
+                  </option> 
+                 
+                </select>
+                
+              </div>
+    
+    <div class="form-group">
+        <label>EMAIL ADDRESS </label>
+        <input  
+        pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+        type="email" class="form-control form-control-lg" placeholder="Enter Your Email" name="emailAddress"
+        #emailAddress="ngModel" [(ngModel)]="service.formData.emailAddress" 
+        required  
+        [class.invalid]="emailAddress.invalid && emailAddress.touched ">
+        <div  [hidden]="emailAddress.valid || emailAddress.pristine"
+    class="alert alert-danger" >
+    Please enter valid EmailAddress
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>AGE</label>
+        <input  pattern="^([2-5][0-9]|6[0])$" class="form-control form-control-lg" placeholder="Enter Your Age" name="age"
+        #age="ngModel" [(ngModel)]="service.formData.age" 
+        required min="20" max="60"
+        [class.invalid]="age.invalid && age.touched ">
+        <div  [hidden]="name.valid || name.pristine"
+    class="alert alert-danger" >
+    Age must be between 20 & 60
+        </div>
+    </div>
+
+        <div class="form-group">
+        <div class="form-control">
+
+            <label class="checkbox-inline">
+        <input type="checkbox" name="hired"  #hired="ngModel"
+        [(ngModel)]="service.formData.hired"
+        > HIRED?
+
+            </label>
+        </div>
+
+    </div>
+<div class="form-row">
+
+    <div class="form-group col-md-6">
+        <button style="background-color: rgb(245, 163, 86);"  class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">
+            Send
+        </button>
+    </div>
+    <div class="form-group col-md-6">
+        <button style="background-color: rgb(245, 163, 86);"  class="btn btn-info btn-lg btn-block" type="reset" [disabled]="form.invalid">
+            Reset
+        </button>
+    </div>
+</div>
+
+</form>
