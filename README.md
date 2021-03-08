@@ -1,4 +1,20 @@
 # Applicant
+The including Form is an Angular Application which uses the API to Post Data AND Validate all the inputs with
+the exact same parameters as the API does.
+- Typescript is used
+- angular-cli is used
+- Form can only be send if the data is valid
+- include Boostrap for the UI
+- include form validation
+- invalid fields  marked with an red border and an explanation why the date is invalid
+- the form has to buttons- send and reset.
+- the reset button is only enabled if the user has typed in data -> if all fields are empty the reset button is not enabled.
+- when the user has touched a field but afterwards deleted all entries, the reset button is also not enabled.
+- The send button is only active if all required fields are filled out and are valid.
+- after sending the data, the user redirects to a view which confirms the sending.
+- if the sending was not successful an error message is shown in a dialog. Describing what was going wrong.
+
+# Applicant
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
